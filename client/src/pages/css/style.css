@@ -1,0 +1,330 @@
+main {
+    background-color: #0250c5;
+    background-image: linear-gradient(45deg, #0250c5 0%, #d43f8d 100%);
+    
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg-title {
+    position: absolute;
+    font-style: italic;
+    font-size: calc(100vw / 7);
+    z-index: 0;
+    top: 50%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 800px) {
+    .bg-title {
+        top: 60%;
+        left: 50%;
+        font-size: calc(100vw / 4);
+    }
+}
+
+.panel {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 20px;
+    color: #fff;
+    box-sizing: border-box;
+
+    -webkit-box-shadow: 0px 0px 12px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 0px 12px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 0px 12px 0px rgba(34, 60, 80, 0.2);
+}
+
+.panel.auth {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.panel > .panel-title {
+    font-weight: 900;
+    font-size: xx-large;
+    margin-top: 0;
+}
+
+.auth > form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth > form > .form-inputs {
+
+    margin-right: 10px;
+}
+
+input {
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.auth > form > button {
+    background-color: transparent;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    color: #fff;
+    font-size: x-large;
+    line-height: 115%;
+}
+
+.error {
+    color: red;
+}
+
+.panel.error-panel {
+    max-width: 400px;
+}
+
+.panel.error-panel > .panel-body {
+    margin-bottom: 30px;
+}
+
+a.btn {
+    background-color: transparent;
+    border-radius: 20px;
+    color: #fff;
+    text-align: center;
+    border: 2px solid #fff;
+    padding: 5px 10px;
+    font-weight: 600;
+    text-decoration: none;
+    display: block;
+    margin: 0 auto;
+}
+
+
+main.main {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100vh;
+}
+
+.topbar {
+    align-self: flex-start;
+    display: flex;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+}
+
+.topbar > .panel {
+    padding: 10px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.topbar > .panel button {
+    background-color: transparent;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    color: #fff;
+    padding: 5px 10px;
+}
+
+.topbar > .user-info > .user-fullname {
+    padding: 0;
+    padding-left: 10px;
+    margin: 0;
+    align-self: center;
+}
+
+.topbar > .tools > .group-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    padding-left: 20px;
+}
+
+.tabel {
+    align-self: flex-start;
+    justify-self: start;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.tabel > .row,
+.tabel > .row.tasks > .group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.tabel > .row > div,
+.tabel > .row.tasks > .group > div {
+    flex-grow: 3;
+    text-align: center;
+    /* border: 1px solid rgba(255, 255, 255, 0.2); */
+    border-top: 0;
+    border-bottom: 0;
+}
+
+.tabel > .row > .status-col,
+.tabel>.row.tasks > .group > .status-col {
+    max-width: 100px;
+}
+
+.tabel > .status-titles .status-title {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: xx-large;
+    margin-top: 0;
+    font-weight: 900;
+}
+
+.tabel > .row.tasks {
+    display: flex;
+    flex-direction: column;
+}
+
+.tabel>.row.tasks>.group {
+    margin-bottom: 40px;
+}
+
+.tabel >.row.tasks >.group > .status-col > .status-title {
+    font-size: xx-large;
+    color:  rgba(255, 255, 255, 0.5);
+    font-weight: 900;
+    /* transform: rotate(-90deg); */
+    writing-mode: sideways-lr;
+}
+
+.tabel > .row.tasks > .group > .status > .task-card {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 20px;
+    color: #fff;
+    box-sizing: border-box;
+
+    margin: 20px 20px;
+    margin-top: 0;
+
+    -webkit-box-shadow: 0px 0px 12px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 0px 12px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 0px 12px 0px rgba(34, 60, 80, 0.2);
+
+    transition: 0.5s;
+}
+
+.tabel>.row.tasks>.group>.status>.task-card:hover {
+    transform: scale(1.1);
+    z-index: 999999;
+    -webkit-box-shadow: 0px 0px 15px 5px rgba(34, 60, 80, 0.4);
+    -moz-box-shadow: 0px 0px 15px 5px rgba(34, 60, 80, 0.4);
+    box-shadow: 0px 0px 15px 5px rgba(34, 60, 80, 0.4);
+}
+
+.task-card > .task-card-header {
+    text-align: left;
+    font-size: x-large;
+    font-weight: 600;
+}
+
+.task-card>.task-card-body {
+    text-align: left;
+    font-size: medium;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-card>.task-card-body > .task-card-priority {
+    font-weight: 600;
+}
+
+.modal-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0vw;
+    height: 0vh;
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    transition: 0.2s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-wrapper > * {
+    display: none;
+}
+
+.modal-wrapper.active {
+    top: 0%;
+    left: 0%;
+    width: 100vw;
+    height: 100vh;
+}
+
+.modal-wrapper.active>* {
+    display: block;
+}
+
+.modal-wrapper.active > .modal {
+    display: flex;
+    flex-direction: row;
+    gap: 20px
+}
+
+.modal-wrapper.active>.modal > .modal-left-side {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 3;
+}
+
+.modal-wrapper.active>.modal>.modal-right-side {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.modal-wrapper.active>.modal>.modal-right-side > * {
+    margin: 0;
+}
+
+.modal-wrapper.active>.modal>.modal-left-side > .modal-header {
+    font-size: x-large;
+}
+
+.modal-wrapper.active>.modal>.modal-right-side>.modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
+
+.btn.modal-save, .btn.modal-close {
+    justify-self:center;
+    background-color: transparent;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    color: #fff;
+    font-size: large;
+    padding: 5px;
+}
