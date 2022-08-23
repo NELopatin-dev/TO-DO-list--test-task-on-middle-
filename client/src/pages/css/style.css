@@ -53,13 +53,13 @@ main {
     margin-top: 0;
 }
 
-.auth > form {
+.auth > .panel-body {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.auth > form > .form-inputs {
+.auth > .panel-body > .form-inputs {
 
     margin-right: 10px;
 }
@@ -72,7 +72,7 @@ input {
     color: #fff;
 }
 
-.auth > form > button {
+.auth > .panel-body > button {
     background-color: transparent;
     border: 2px solid #fff;
     border-radius: 50%;
@@ -155,6 +155,14 @@ main.main {
     padding-left: 20px;
 }
 
+.topbar>.tools>.group-buttons.no-left-gap {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    border-left: 0px solid rgba(255, 255, 255, 0.5);
+    padding-left: 0px;
+}
+
 .tabel {
     align-self: flex-start;
     justify-self: start;
@@ -170,11 +178,13 @@ main.main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 0px;
 }
 
 .tabel > .row > div,
 .tabel > .row.tasks > .group > div {
-    flex-grow: 3;
+    /* flex-grow: 1; */
+    width: 100%;
     text-align: center;
     /* border: 1px solid rgba(255, 255, 255, 0.2); */
     border-top: 0;
@@ -256,13 +266,15 @@ main.main {
 
 .modal-wrapper {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0vw;
-    height: 0vh;
+    top: 0%;
+    left: 0%;
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
-    transition: 0.2s;
+    opacity: 0;
+    transition: 0.5s;
+    z-index: -1;
 
     display: flex;
     justify-content: center;
@@ -274,10 +286,8 @@ main.main {
 }
 
 .modal-wrapper.active {
-    top: 0%;
-    left: 0%;
-    width: 100vw;
-    height: 100vh;
+    opacity: 1;
+    z-index: 999;
 }
 
 .modal-wrapper.active>* {
@@ -327,4 +337,12 @@ main.main {
     color: #fff;
     font-size: large;
     padding: 5px;
+}
+
+.red {
+    color: rgb(233, 104, 104);
+}
+
+.green {
+    color: rgb(0, 255, 0);
 }

@@ -1,0 +1,102 @@
+-- ----------------------------------------------------------------------------
+-- MySQL Workbench Migration
+-- Migrated Schemata: todo_success
+-- Source Schemata: todo_success
+-- Created: Tue Aug 23 15:06:17 2022
+-- Workbench Version: 8.0.30
+-- ----------------------------------------------------------------------------
+
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------------------------------------------------------
+-- Schema todo_success
+-- ----------------------------------------------------------------------------
+DROP SCHEMA IF EXISTS `todo_success` ;
+CREATE SCHEMA IF NOT EXISTS `todo_success` ;
+
+-- ----------------------------------------------------------------------------
+-- Table todo_success.task_priority
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `todo_success`.`task_priority` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = utf8mb3;
+
+-- ----------------------------------------------------------------------------
+-- Table todo_success.task_status
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `todo_success`.`task_status` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = utf8mb3;
+
+-- ----------------------------------------------------------------------------
+-- Table todo_success.tasks
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `todo_success`.`tasks` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(90) NOT NULL DEFAULT 'Заголовок',
+  `description` LONGTEXT NULL DEFAULT NULL,
+  `data_start` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+  `data_finish` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+  `data_update` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+  `priority_id` INT(11) NOT NULL DEFAULT 0,
+  `status_id` INT(11) NOT NULL DEFAULT 0,
+  `creater_id` INT(9) NOT NULL,
+  `employee_id` INT(9) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `priority_id` (`priority_id` ASC) VISIBLE,
+  INDEX `status_id_idx` (`status_id` ASC) VISIBLE,
+  INDEX `creater_id_idx` (`creater_id` ASC) VISIBLE,
+  INDEX `employee_id_idx` (`employee_id` ASC) VISIBLE,
+  CONSTRAINT `creater_id`
+    FOREIGN KEY (`creater_id`)
+    REFERENCES `todo_success`.`users` (`id`)
+    ON UPDATE CASCADE,
+  CONSTRAINT `employee_id`
+    FOREIGN KEY (`employee_id`)
+    REFERENCES `todo_success`.`users` (`id`)
+    ON UPDATE CASCADE,
+  CONSTRAINT `priority_id`
+    FOREIGN KEY (`priority_id`)
+    REFERENCES `todo_success`.`task_priority` (`id`)
+    ON UPDATE CASCADE,
+  CONSTRAINT `status_id`
+    FOREIGN KEY (`status_id`)
+    REFERENCES `todo_success`.`task_status` (`id`)
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 14
+DEFAULT CHARACTER SET = utf8mb3;
+
+-- ----------------------------------------------------------------------------
+-- Table todo_success.users
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `todo_success`.`users` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `surname` VARCHAR(45) NOT NULL,
+  `patronymic` VARCHAR(45) NULL DEFAULT NULL,
+  `login` VARCHAR(45) NOT NULL,
+  `password` LONGTEXT NOT NULL,
+  `boss_id` INT(9) NULL DEFAULT NULL,
+  `boss_status` TINYINT(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
+  UNIQUE INDEX `login_UNIQUE` (`login` ASC) VISIBLE,
+  INDEX `boss_id_idx` (`boss_id` ASC) VISIBLE,
+  CONSTRAINT `boss_id`
+    FOREIGN KEY (`boss_id`)
+    REFERENCES `todo_success`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+AUTO_INCREMENT = 7
+DEFAULT CHARACTER SET = utf8mb3;
+SET FOREIGN_KEY_CHECKS = 1;
