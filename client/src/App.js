@@ -34,7 +34,8 @@ export default function App() {
     return (
         <BrowserRouter>
             <Routes path="/">
-                <Route index element={isAuth ? <Main /> : <Auth />} />
+                <Route index element={i
+                    />
                 <Route path="*" element={<NoPage />} />
             </Routes>
         </BrowserRouter>
